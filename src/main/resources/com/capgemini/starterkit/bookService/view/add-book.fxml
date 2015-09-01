@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-preview-i18n-resource ../bundle/bundle.properties?>
+<?scenebuilder-stylesheet ../css/standard.css?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane prefHeight="344.0" prefWidth="500" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.starterkit.bookService.controller.AddBookController">
+  <Label layoutX="170.0" layoutY="14.0" styleClass="formTitle" text="%label.addBook" />
+  <GridPane hgap="10.0" layoutX="14.0" layoutY="60.0" vgap="10.0">
+    <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+    </columnConstraints>
+    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+      <Label text="%label.bookTitle" />
+      <TextField fx:id="titleField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+      <Button fx:id="addBookButton" defaultButton="true" minWidth="10.0" mnemonicParsing="false" onAction="#addBookButtonAction" prefWidth="120.0" text="%button.addBook" GridPane.columnIndex="2" />
+    </children>
+  </GridPane>
+  <TableView fx:id="resultTable" layoutX="10.0" layoutY="120.0" prefHeight="200.0" prefWidth="332.0">
+    <columns>
+      <TableColumn fx:id="firstNameColumn" minWidth="60.0" prefWidth="157.0" text="%column.firstName" />
+      <TableColumn fx:id="lastNameColumn" minWidth="58.0" prefWidth="173.0" text="%column.lastName" />
+    </columns>
+  </TableView>
+   <Button layoutX="354.0" layoutY="120.0" mnemonicParsing="false" onAction="#addAuthorButtonAction" prefHeight="75.0" prefWidth="120.0" text="%button.addAuthor" />
+</AnchorPane>

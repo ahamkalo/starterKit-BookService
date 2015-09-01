@@ -1,0 +1,34 @@
+
+/* defined colors */
+
+
+/* Root of the scene */
+.root {
+}
+
+
+/* Select elements by their CSS class ("styleClass" attribute) */
+.formTitle {
+	-fx-font-size: 20.0px;
+	-fx-font-weight: bold;
+}
+
+
+/* Select element by its "fx:id" attribute */
+#resultTable #titleColumn, #idColumn {
+	-fx-alignment: center ;
+}
+
+#resultTable #idColumn {
+	-fx-alignment: center ;
+}
+
+#resultTable #authorsColumn {
+	-fx-alignment: center-left ;
+}
+
+/* Select using the "selected" pseudo-selector */
+.table-view .table-row-cell:selected {
+	-fx-font-weight: bold;
+	-fx-font-size: 130.0%;
+}
