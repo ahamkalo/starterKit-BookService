@@ -2,6 +2,9 @@ package com.capgemini.starterkit.bookService.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.apache.log4j.Logger;
+
 import com.capgemini.starterkit.bookService.dataprovider.data.AuthorVO;
 import com.capgemini.starterkit.bookService.model.AddAuthorModel;
 import com.capgemini.starterkit.bookService.model.AddBookModel;
@@ -11,6 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class AddAuthorController {
+
+	private static final Logger LOG = Logger.getLogger(AddAuthorController.class);
+
 	@FXML
 	ResourceBundle resources;
 
@@ -41,6 +47,7 @@ public class AddAuthorController {
 
 	@FXML
 	public void addAuthorButtonAction() {
+		LOG.debug("'Add Author' button clicked");
 		addBookModel.getAuthors().add(new AuthorVO(null, model.getFirstName(), model.getLastName()));
 		authorStage.close();
 	}
