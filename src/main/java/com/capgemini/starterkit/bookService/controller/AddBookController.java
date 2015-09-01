@@ -99,10 +99,6 @@ public class AddBookController {
 	@FXML
 	public void addAuthorButtonAction() throws IOException {
 		Stage authorStage = new Stage();
-		/*
-		 * REV: okno dodawania autora powinno byc modalne w stosunku do okna dodawania ksiazki:
-		 * stage.initOwner(bookStage);
-		 */
 		FXMLLoader fxmlLoader = initializeFXMLLoader();
 
 		Parent root = fxmlLoader.load();

@@ -138,10 +138,6 @@ public class BookSearchController {
 	@FXML
 	public void addBookButtonAction() throws IOException {
 		Stage stage = new Stage();
-		/*
-		 * REV: okno dodawania ksiazki powinno byc modalne w stosunku do okna wyszukiwania ksiazki:
-		 * stage.initOwner(primaryStage);
-		 */
 
 		stage.setTitle("Add Book");
 
