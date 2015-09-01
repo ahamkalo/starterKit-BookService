@@ -20,7 +20,14 @@ public class BookProviderImpl implements BookProvider {
 
 	private static final Logger LOG = Logger.getLogger(BookProviderImpl.class);
 
+	/*
+	 * REV: wynik wyszukiwania nie powinien byc przechowywany jako pole w klasie
+	 */
 	private List<BookVO> books = new ArrayList<>();
+
+	/*
+	 * REV: to pole nie powinno byc statyczne
+	 */
 	static ObjectMapper objectMapper = new ObjectMapper();
 
 	public BookProviderImpl() {
@@ -32,6 +39,9 @@ public class BookProviderImpl implements BookProvider {
 		try {
 			books = callRestAndGetBooksWithTitle(title);
 		} catch (IOException e) {
+			/*
+			 * REV: lepiej byloby rzucic wyjatek i wyswietlic komunikat na GUI
+			 */
 			LOG.debug("Problem with findBooks!");
 		}
 
@@ -48,6 +58,9 @@ public class BookProviderImpl implements BookProvider {
 			json = mapToJson(book);
 			makePostRequest(json);
 		} catch (IOException e) {
+			/*
+			 * REV: j.w.
+			 */
 			LOG.debug("Problem with saveBook!");
 		}
 
@@ -55,7 +68,13 @@ public class BookProviderImpl implements BookProvider {
 		return null;
 	}
 
+	/*
+	 * REV: ta metoda nie powinna byc statyczna
+	 */
 	private static List<BookVO> callRestAndGetBooksWithTitle(String title) throws IOException {
+		/*
+		 * REV: adres serwera powinien byc wczytany z pliku konfiguracyjnego
+		 */
 		URL url = new URL("http://localhost:9721/workshop/rest/books/books-by-title?titlePrefix=" + title);
 		List<BookVO> books = Arrays.asList(objectMapper.readValue(url, BookVO[].class));
 
@@ -69,7 +88,14 @@ public class BookProviderImpl implements BookProvider {
 	}
 
 	private void makePostRequest(String json) throws IOException {
+		/*
+		 * REV: adres serwera powinien byc wczytany z pliku konfiguracyjnego
+		 */
 		String url = "http://localhost:9721/workshop/rest/books/book";
+		/*
+		 * REV: tworzenie obiektu Httpclient jest kosztowne.
+		 * Powinien on byc zapisany jako pole w tej klasie, a nie tworzony przy kazdym wywolaniu serwera.
+		 */
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost request = new HttpPost(url);
 		StringEntity jsonEntity = new StringEntity(json, "UTF-8");
